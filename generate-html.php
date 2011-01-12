@@ -76,9 +76,11 @@ function region_form_builder( array $regions, $region_default=null ) {
 	if ( empty( $region_default ) )
 		$s .= ' selected="selected"';
 	$s .= '>&nbsp;</option>';
+	asort($regions['regions']);
 	foreach ( $regions['regions'] as $region_code=>$region ) {
 		if ( isset( $regions['subregions'] ) ) {
 			$s .= '<optgroup label="' . htmlspecialchars( $region['name'] ) . '">';
+			asort($regions['subregions']);
 			foreach ( $region['subregions'] as $subregion_code=>$subregion ) {
 				$s .= single_region_option( $subregion_code, $subregion['name'], $region_default );
 			}
